@@ -20,9 +20,21 @@ public class SalaryServiceImpl implements SalaryService{
         List<SalaryDto> salaryDtoList = new ArrayList<>();
         List <Salary> salaryList = salaryRepository.findAll();
         for (Salary salary : salaryList) {
-            salaryDtoList.add (new SalaryDto(salary.getName(),salary.getFullSalaryGross(),salary.getContractualSalaryGross(),
-                    salary.getKpi()));
+            salaryDtoList.add (new SalaryDto(salary.getName(), salary.getSalaryAmount(),
+                    salary.getKpi(), salary.getId()));
         }
         return salaryDtoList;
     }
+
+    @Override
+    public void addSalary(String name, Long salaryAmount, Long kpi, Long id) {
+        Salary salary= new Salary();
+        salary.setName(name);
+        salary.setSalaryAmount(salaryAmount);
+        salary.setKpi(kpi);
+        salary.setId(id);
+        salaryRepository.save(salary);
+    }
+
+
 }

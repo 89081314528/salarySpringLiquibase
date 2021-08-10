@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+<changeSet  author="Julia"  id="02/08/1">
+        <createTable tableName="salaries2">
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="salary_amount" type="bigint">
+<!--                <constraints nullable="false"/>-->
+            </column>
+            <column name="kpi" type="bigint">
+<!--                <constraints nullable="false"/>-->
+            </column>
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+
+        <insert tableName="salaries2">
+            <column name = "name">Савельева</column>
+            <column name = "salary_amount">25000</column>
+            <column name = "kpi">1870</column>
+            <column name = "id">1</column>
+        </insert>
+
+        <insert tableName="salaries2">
+            <column name = "name">Петрова</column>
+            <column name = "salary_amount">26000</column>
+            <column name = "kpi">5000</column>
+            <column name = "id">2</column>
+        </insert>
+    </changeSet>
+
+    <changeSet  author="Julia"  id="02/08/2">
+        <insert tableName="salaries2">
+            <column name = "name">Руденко</column>
+            <column name = "salary_amount">28000</column>
+            <column name = "kpi">6000</column>
+            <column name = "id">3</column>
+        </insert>
+    </changeSet>
+
+    <changeSet  author="Julia"  id="02/08/3">
+        <insert tableName="salaries2">
+            <column name = "name">Григорьев</column>
+            <column name = "salary_amount">29000</column>
+            <column name = "kpi">6000</column>
+            <column name = "id">4</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
+

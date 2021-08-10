@@ -2,8 +2,10 @@ package ru.julia.salarySpringLiquibase.controllers;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.julia.salarySpringLiquibase.dto.SalaryDto;
+import ru.julia.salarySpringLiquibase.entities.Salary;
 import ru.julia.salarySpringLiquibase.services.SalaryService;
 
 import java.util.List;
@@ -28,6 +30,11 @@ public class SalaryController {
     @RequestMapping("/findAll")
     public List<SalaryDto> findAll() {
         return salaryService.findAll();
+    }
+
+    @RequestMapping("/add")
+    public void add(@RequestParam (name = "name") String name, @RequestParam (name = "salaryAmount") Long salaryAmount,
+                    @RequestParam (name = "kpi") Long kpi, @RequestParam (name = "id") Long id) {
     }
 
 }

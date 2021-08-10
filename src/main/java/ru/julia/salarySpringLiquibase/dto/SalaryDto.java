@@ -1,32 +1,50 @@
 package ru.julia.salarySpringLiquibase.dto;
-import java.math.BigDecimal;
 
 public class SalaryDto {
-    String name;
-    BigDecimal fullSalaryGross;
-    BigDecimal contractualSalaryGross;
-    BigDecimal kpi;
 
-    public SalaryDto(String name, BigDecimal fullSalaryGross, BigDecimal contractualSalaryGross, BigDecimal kpi) {
+    String name;
+    Long salaryAmount;
+    Long kpi;
+    Long id;
+
+    public void setName(String name) {
         this.name = name;
-        this.fullSalaryGross = fullSalaryGross;
-        this.contractualSalaryGross = contractualSalaryGross;
+    }
+
+    public void setSalaryAmount(Long salaryAmount) {
+        this.salaryAmount = salaryAmount;
+    }
+
+    public void setKpi(Long kpi) {
         this.kpi = kpi;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public BigDecimal getFullSalaryGross() {
-        return fullSalaryGross;
+    public Long getSalaryAmount() {
+        return salaryAmount;
     }
 
-    public BigDecimal getContractualSalaryGross() {
-        return contractualSalaryGross;
-    }
-
-    public BigDecimal getKpi() {
+    public Long getKpi() {
         return kpi;
     }
+
+    public SalaryDto(String name, Long salaryAmount, Long kpi, Long id) {
+        this.name = name;
+        this.salaryAmount = salaryAmount;
+        this.kpi = kpi;
+        this.id = id;
+    }
 }
+
+
