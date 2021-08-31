@@ -8,6 +8,7 @@ import ru.julia.salarySpringLiquibase.repositories.SalaryRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,7 +31,7 @@ public class SalaryServiceImpl implements SalaryService {
     }
 
     @Override
-    public void addSalary(String name, Long salaryAmount, Long kpi, Long id) {
+    public void addSalary(String name, Long salaryAmount, Long kpi, Integer id) {
         Salary salary = new Salary();
         salary.setName(name);
         salary.setSalaryAmount(salaryAmount);
@@ -60,13 +61,26 @@ public class SalaryServiceImpl implements SalaryService {
     }
 
     @Override
-    public void deleteSalaryById(Long id) {
-//        Salary salary = salaryRepository.findById(id); не могу так сделать, потому что Long id
-        List<Salary> salaryList = salaryRepository.findAll();
-        for (Salary salary : salaryList) {
-            if(salary.getId().equals(id)) {
+    public void deleteSalaryById(Integer id) {
+        Salary salary = salaryRepository.findById(id).orElseThrow();
                 salaryRepository.delete(salary);
-            }
-        }
     }
+
+    @Override // перезаписать Salary по id все равно, что добавить нового с тем же id
+    public void rewriteSalaryById(String name, Long salaryAmount, Long kpi, Integer id) {
+        Salary salary = new Salary();
+        salary.setName(name);
+        salary.setSalaryAmount(salaryAmount);
+        salary.setKpi(kpi);
+        salary.setId(id);
+        salaryRepository.save(salary);
+    }
+
+    @Override
+    public void rewriteKpiById(Long kpi, Integer id) {
+        Salary salary = salaryRepository.findById(id).orElseThrow();
+        salary.setKpi(kpi);
+        salaryRepository.save(salary);
+    }
+
 }

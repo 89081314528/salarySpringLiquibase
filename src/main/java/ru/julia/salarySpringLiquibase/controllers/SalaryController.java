@@ -17,7 +17,8 @@ import java.util.List;
  * 3) удалить всего Salary по id
  * 4) перезаписать всего Salary по id
  * 5) перезаписать кпи по id
- * 6) метод, в который передаю название csv файла. Метод перекладывает файл в таблицу в БД. Использовать OpenCsv
+ * 6) метод, в который передаю название csv файла - weather. Метод перекладывает файл в таблицу в БД. Использовать OpenCsv
+ * нормально, что я создаю тут репозитории, сервисы, проще можно сделать? или в спринге только так?
  * 7) Метод принимает имя файла, в этот момент в директории должен появиться файл с этим именем, который содержит все
  * зарплаты из БД
  */
@@ -47,7 +48,7 @@ public class SalaryController {
 
     @RequestMapping("/add")
     public void addSalary(@RequestParam("name") String name, @RequestParam(name = "salaryAmount") Long salaryAmount,
-                          @RequestParam(name = "kpi") Long kpi, @RequestParam(name = "id") Long id) {
+                          @RequestParam(name = "kpi") Long kpi, @RequestParam(name = "id") Integer id) {
         salaryService.addSalary(name, salaryAmount, kpi, id);
     }
 
@@ -56,7 +57,17 @@ public class SalaryController {
         return salaryService.findSalaryInInterval(min, max);
     }
     @RequestMapping("/delete")
-    public void deleteSalaryById(@RequestParam("id") Long id) {
+    public void deleteSalaryById(@RequestParam("id") Integer id) {
     salaryService.deleteSalaryById(id);
+    }
+
+    @RequestMapping("/rewriteSalaryById")
+    public void rewriteSalaryById(@RequestParam("name") String name, @RequestParam(name = "salaryAmount") Long salaryAmount,
+                                  @RequestParam(name = "kpi") Long kpi, @RequestParam(name = "id") Integer id) {
+        salaryService.rewriteSalaryById(name, salaryAmount, kpi, id);
+    }
+    @RequestMapping("/rewriteKpiById")
+    public void rewriteKpiById(@RequestParam(name = "kpi") Long kpi, @RequestParam(name = "id") Integer id) {
+        salaryService.rewriteKpiById(kpi, id);
     }
 }

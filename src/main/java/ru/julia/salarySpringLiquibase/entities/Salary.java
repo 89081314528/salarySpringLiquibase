@@ -19,7 +19,7 @@ public class Salary {
     Long kpi;
     @Column(name = "id")
     @Id
-    Long id;
+    Integer id;
 
     public Salary() {
     }

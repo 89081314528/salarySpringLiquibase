@@ -10,7 +10,7 @@ public class SalaryDto {
     private final String name;
     private final Long salaryAmount;
     private final Long kpi;
-    private final Long id;
+    private final Integer id;
 }
 
 

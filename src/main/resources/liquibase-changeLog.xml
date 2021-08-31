@@ -16,7 +16,7 @@
             <column name="kpi" type="bigint">
 <!--                <constraints nullable="false"/>-->
             </column>
-            <column name="id" type="bigint">
+            <column name="id" type="integer">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
         </createTable>
@@ -52,6 +52,23 @@
             <column name = "kpi">6000</column>
             <column name = "id">4</column>
         </insert>
+    </changeSet>
+
+    <changeSet  author="Julia"  id="31/08/1">
+    <createTable tableName="weather">
+        <column name="date" type="integer">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="abkhazia" type="integer">
+            <!--                <constraints nullable="false"/>-->
+        </column>
+        <column name="crimea" type="integer">
+            <!--                <constraints nullable="false"/>-->
+        </column>
+        <column name="difference" type="integer">
+            <constraints nullable="false"/>
+        </column>
+    </createTable>
     </changeSet>
 </databaseChangeLog>
 
