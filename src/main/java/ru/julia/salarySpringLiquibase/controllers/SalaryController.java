@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.julia.salarySpringLiquibase.dto.SalaryDto;
 import ru.julia.salarySpringLiquibase.services.SalaryService;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 /**
@@ -69,5 +70,9 @@ public class SalaryController {
     @RequestMapping("/rewriteKpiById")
     public void rewriteKpiById(@RequestParam(name = "kpi") Long kpi, @RequestParam(name = "id") Integer id) {
         salaryService.rewriteKpiById(kpi, id);
+    }
+    @RequestMapping("/doCsvFileSalary/{fileName}")
+    public void doCsvFileSalary(@PathVariable String fileName) throws FileNotFoundException {
+        salaryService.doCsvFileSalary(fileName);
     }
 }

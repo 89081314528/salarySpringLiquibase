@@ -6,6 +6,8 @@ import ru.julia.salarySpringLiquibase.dto.SalaryDto;
 import ru.julia.salarySpringLiquibase.entities.Salary;
 import ru.julia.salarySpringLiquibase.repositories.SalaryRepository;
 
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -81,6 +83,23 @@ public class SalaryServiceImpl implements SalaryService {
         Salary salary = salaryRepository.findById(id).orElseThrow();
         salary.setKpi(kpi);
         salaryRepository.save(salary);
+    }
+
+    @Override
+    public void doCsvFileSalary(String fileName) throws FileNotFoundException {
+        List<Salary> salaryList = salaryRepository.findAll();
+        PrintStream csv = new PrintStream(fileName);
+        csv.println(
+                "name" + ";" + "salaryAmount" + ";" + "kpi" + ";" + "id"
+        );
+        for (Salary salary : salaryList) {
+            csv.println(
+                    salary.getName() + ";" +
+                            salary.getSalaryAmount() + ";" +
+                            salary.getKpi() + ";" +
+                            salary.getId()
+            );
+        }
     }
 
 }
