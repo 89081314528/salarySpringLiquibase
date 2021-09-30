@@ -13,7 +13,8 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 /**
- * 6) метод, в который передаю название csv файла - weather. Метод перекладывает файл в таблицу в БД. Использовать OpenCsv
+ * 6) метод, в который передаю название csv файла - weather. Метод перекладывает файл в таблицу в БД.
+ * Использовать OpenCsv
  * нормально, что я создаю тут репозитории, сервисы, проще можно сделать? или в спринге только так?
  */
 @RestController
@@ -21,13 +22,13 @@ import java.util.List;
 public class WeatherController {
     private final WeatherService weatherService;
 
-    @RequestMapping("/findAllWeather")
-    public List<Weather> findAll() {
-        return weatherService.findAll();
-    }
-    @RequestMapping("/createTable/{fileName}")
-    public void createTableFromCsv(@PathVariable String fileName) throws FileNotFoundException {
-        weatherService.createTableFromCsv(fileName);
-    }
+        @RequestMapping("/findAllWeather")
+        public List<Weather> findAll() {
+            return weatherService.findAll();
+        }
+        @RequestMapping("/createTable/{fileName}")
+        public void createTableFromCsv(@PathVariable String fileName) throws FileNotFoundException {
+            weatherService.createTableFromCsv(fileName);
+        }
 
 }
